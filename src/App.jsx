@@ -1,26 +1,20 @@
-import { useState } from "react"
+import { useRef } from "react"
 import "../src/App.scss"
 
 const App = () => {
 
-  const [data, setData] = useState({ email: "", password: ""})
+  const data = { email: "", password: ""}
+  const loginForm = useRef()
 
-  const changeData = e => {
-    setData({
-      ...data,
-      [e.target.name]: e.target.value
-    })
-  }
-  
   const submit = e =>{
     e.preventDefault()
-    console.log(data);
+    console.log(loginForm.current);
     alert("Bienvenido Luis Felipiño al formulario en React ")
   }
 
   return(
     <div className="ed-grid" >
-      <form className="ed-container l-30" onSubmit={submit}>
+      <form className="ed-container l-30" onSubmit={submit} ref={loginForm} >
         <div className="ed-item form__item">
           <label htmlFor="email">
             Correo electronico
@@ -28,8 +22,7 @@ const App = () => {
               type="email" 
               name="email" 
               id="email" 
-              value={data.email} 
-              onChange={changeData}
+              defaultValue={data.email} 
             />
           </label>
         </div>
@@ -40,8 +33,7 @@ const App = () => {
               type="password" 
               name="password" 
               id="password" 
-              value={data.password} 
-              onChange={changeData}
+              defaultValue={data.password} 
             />
           </label>
         </div>

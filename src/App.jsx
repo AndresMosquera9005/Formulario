@@ -1,5 +1,6 @@
 import { useRef } from "react"
 import "../src/App.scss"
+import Field from "./components/Field"
 
 const App = () => {
 
@@ -15,17 +16,7 @@ const App = () => {
   return(
     <div className="ed-grid" >
       <form className="ed-container l-30" onSubmit={submit} ref={loginForm} >
-        <div className="ed-item form__item">
-          <label htmlFor="email">
-            Correo electronico
-            <input
-              type="email" 
-              name="email" 
-              id="email" 
-              defaultValue={data.email} 
-            />
-          </label>
-        </div>
+        <Field type="email" value={data.password} label="Correo electronico" />
         <div className="ed-item form__item">
           <label htmlFor="password">
             Contraseña
